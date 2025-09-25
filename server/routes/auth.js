@@ -27,11 +27,17 @@ router.post('/signup', async (req, res) => {
 
 // POST /auth/login
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { email, username, password } = req.body;
     try {
+        if (!email && !username) {
+            return res.status(400).json( {error : 'Email or username is required'})
+        }
+
+        const identifier = email || username;
+        const field = email ? 'email' : 'username';
         const { rows } = await pool.query(
-            `SELECT id, email, username, password_hash FROM users WHERE email = $1`,
-            [email]
+            `SELECT id, email, username, password_hash FROM users WHERE ${field} = $1`,
+            [identifier]
         );
         const user = rows[0];
         if (!user) return res.status(401).json({error:'invalid credentials'});
