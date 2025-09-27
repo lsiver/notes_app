@@ -5,11 +5,16 @@ const router = express.Router();
 
 // GET /notes?user_id=X
 router.get('/', async (req, res) => {
-    const { user_id } = req.query;
+    //const { user_id } = req.query;
+    const userId = req.user.id;
     try {
         const { rows } = await pool.query(
-            'SELECT * from notes WHERE user_id = $1 ORDER BY created_at DESC',
-            [user_id]
+            //'SELECT * from notes WHERE user_id = $1 ORDER BY created_at DESC',
+            //[user_id]
+            `SELECT title, body, created_at FROM notes
+            WHERE user_id = $1
+            ORDER BY created_at DESC`,
+            [userId]
         );
         res.json(rows);
     } catch (err) {
