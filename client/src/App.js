@@ -1,28 +1,10 @@
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
+import React, { useState } from "react";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
+import NotesList from "./NotesList";
+import AuthButtons from './AuthButtons';
 
 const apiCall = () => {
   axios.get('http://localhost:8080').then((data) => {
@@ -32,10 +14,22 @@ const apiCall = () => {
 }
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <div className = "App">
       <header className ="App-header">
-        <button onClick = {apiCall}>Make API Call</button>
+        {!user ? (
+          <AuthButtons
+          apiBase = "http://localhost:8080"
+          onAuth={(u) => setUser(u)}
+          />
+        ) : (
+          <>
+          <h2> Welcome, {user.username}</h2>
+          <NotesList apiBase="http://localhost:8080" userId = {user.id} />
+          </>
+        ) }
       </header>
     </div>
   );
