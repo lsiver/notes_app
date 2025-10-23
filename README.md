@@ -1,6 +1,15 @@
 # Notes App
 ## A CRUD app using PostgreSQL, React, Node, Express
 
+### Routes
+/auth/signup
+/auth/login
+/notes "GET" *To get all notes from a userId, userId pulled from auth*
+/notes "POST" 
+/notes/:id "DELETE"
+
+login/signup are public, everything else is protected
+
 ### Splash page
 ![Screenshot](./images/Splashpage.png)
 
