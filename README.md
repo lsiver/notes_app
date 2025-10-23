@@ -31,4 +31,4 @@ login/signup are public, everything else is protected
 ![Screenshot](./images/logged_in_splash.png)
 
 ### To-do
-*Need to supply a file that creates the PostgreSQL DB*
+*Need to supply a file that creates the PostgreSQL DB, right now it is just local on my machine/docker*
