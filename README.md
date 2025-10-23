@@ -29,3 +29,6 @@ login/signup are public, everything else is protected
 
 ### Notes Area
 ![Screenshot](./images/logged_in_splash.png)
+
+### To-do
+*Need to supply a file that creates the PostgreSQL DB*
