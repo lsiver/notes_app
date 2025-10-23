@@ -1,6 +1,11 @@
 # Notes App
 ## A CRUD app using PostgreSQL, React, Node, Express
 
+### Auth
+Stateless, token-based API. Passwords are hashed with bcrypt.
+
+Login issues a JWT. Middleware verifies the token.
+
 ### Routes
 /auth/signup
 
