@@ -16,9 +16,36 @@ const apiCall = () => {
 function App() {
   const [user, setUser] = useState(null);
 
+  function logout() {
+    setUser(null);
+  }
+
   return (
     <div className = "App">
       <header className ="App-header">
+        {!user && <>
+        <h1>
+          Notes
+        </h1>
+        <p>
+          A CRUD App Using:
+        </p>
+        <ul>
+          <li>
+            Express
+          </li>
+          <li>
+            Node
+          </li>
+          <li>
+            React
+          </li>
+          <li>
+            PostgreSQL
+          </li>
+        </ul>
+        </>}
+        
         {!user ? (
           <AuthButtons
           apiBase = "http://localhost:8080"
@@ -30,6 +57,14 @@ function App() {
           <NotesList apiBase="http://localhost:8080" userId = {user.id} />
           </>
         ) }
+        <br></br>
+      
+      {user &&
+      <button onClick={logout} className="logoutBtn">
+        Logout
+      </button>
+      }
+
       </header>
     </div>
   );
