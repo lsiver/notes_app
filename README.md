@@ -30,5 +30,8 @@ login/signup are public, everything else is protected
 ### Notes Area
 ![Screenshot](./images/logged_in_splash.png)
 
+### Docker File created 10/28/2025
+Docker-compose up, then navigate to http://localhost:3000
+
 ### To-do
-*Need to supply a file that creates the PostgreSQL DB, right now it is just local on my machine/docker*
+~~Need to supply a file that creates the PostgreSQL DB, right now it is just local on my machine/docker~~
