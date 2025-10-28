@@ -1,13 +1,14 @@
-import logo from './logo.svg';
-import axios from 'axios';
+import api from './api';
+import {API_BASE} from './config';
 import './App.css';
 import React, { useState } from "react";
 
 import NotesList from "./NotesList";
 import AuthButtons from './AuthButtons';
 
+
 const apiCall = () => {
-  axios.get('http://localhost:8080').then((data) => {
+  api.get('/').then((data) => {
     //this console.log will be in our frontend console
     console.log(data)
   })
@@ -48,13 +49,13 @@ function App() {
         
         {!user ? (
           <AuthButtons
-          apiBase = "http://localhost:8080"
+          apiBase = {API_BASE}
           onAuth={(u) => setUser(u)}
           />
         ) : (
           <>
           <h2> Welcome, {user.username}</h2>
-          <NotesList apiBase="http://localhost:8080" userId = {user.id} />
+          <NotesList apiBase={API_BASE} userId = {user.id} />
           </>
         ) }
         <br></br>
